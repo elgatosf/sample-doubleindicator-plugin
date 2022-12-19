@@ -10,7 +10,7 @@ const cycle = (idx, min, max) => (idx > max ? min : idx < min ? max : idx);
 const sampleDoubleIndicatorAction = new Action('com.elgato.sample-doubleindicator.action');
 
 sampleDoubleIndicatorAction.onWillAppear(({context, payload}) => {
-    // console.log('will appear', context, payload, device);
+    // console.log('will appear', context, payload);
     MACTIONS[context] = new SampleIndicatorAction(context, payload);
 });
 
