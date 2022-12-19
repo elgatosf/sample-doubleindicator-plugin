@@ -25,6 +25,11 @@ sampleDoubleIndicatorAction.onTitleParametersDidChange(({context, payload}) => {
     MACTIONS[context].color = payload.titleParameters.titleColor;
 });
 
+sampleDoubleIndicatorAction.onKeyUp(({context, payload}) => {
+    // console.log('onKeyUp', context, payload);
+    MACTIONS[context].toggle();
+});
+
 sampleDoubleIndicatorAction.onDialPress(({context, payload}) => {
     // console.log('dial was pressed', context, payload);
     if(payload.pressed === false) {
