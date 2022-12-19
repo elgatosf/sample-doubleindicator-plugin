@@ -1,0 +1,12 @@
+{
+	"Description": "Create a sample dobule-indicator.", 
+	"Name": "Sample Double-Indicator",
+	"Category": "Samples",
+	"com.elgato.sample-doubleindicator.action": {
+		"Name": "Sample Double-Indicator",
+		"Tooltip": "How to move 2 indicators."
+	},
+	"Localization": {
+		"None": "None"
+	}
+}
