@@ -30,13 +30,6 @@ sampleDoubleIndicatorAction.onKeyUp(({context, payload}) => {
     MACTIONS[context].toggle();
 });
 
-sampleDoubleIndicatorAction.onDialPress(({context, payload}) => {
-    // console.log('dial was pressed', context, payload);
-    if(payload.pressed === false) {
-        MACTIONS[context].toggle();
-    }
-});
-
 sampleDoubleIndicatorAction.onDialRotate(({context, payload}) => {
     // console.log('dial was rotated', context, payload.ticks);
     if(payload.hasOwnProperty('ticks')) {
@@ -48,6 +41,24 @@ sampleDoubleIndicatorAction.onTouchTap(({context, payload}) => {
     // console.log('touchpanel was tapped', context, payload);
     if(payload.hold === false) {
         MACTIONS[context].toggle();
+    }
+});
+
+$SD.onConnected(jsn => {
+    const [version, major] = jsn.appInfo.application.version.split(".").map(e => parseInt(e, 10));
+    const hasDialPress = version == 6 && major < 4;
+    if(hasDialPress) {
+        sampleDoubleIndicatorAction.onDialPress(({context, payload}) => {
+            // console.log('dial was pressed', context, payload);
+            if(payload.pressed === false) {
+                MACTIONS[context].toggle();
+            }
+        });
+    } else {
+        sampleDoubleIndicatorAction.onDialUp(({context, payload}) => {
+            console.log('onDialUp', context, payload);
+                MACTIONS[context].toggle();
+        });
     }
 });
 
